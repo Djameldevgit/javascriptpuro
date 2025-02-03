@@ -43,10 +43,67 @@
     font-weight: bold;
     background: none;
 }
-#container-sidebar .sidebar-content{
 
-background-color: rgb(47, 0, 255);
-width: 100%;
-
-}
+.sidebar .container-sidebar  .form-sidebar {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Form Section */
+  .form-section {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 14px;
+    color: #ddd;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  /* Button Style */
+  .btn-submit {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-submit:hover {
+    background-color: #45a049;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+    }
+  
+    .form-sidebar {
+      padding: 20px;
+    }
+  }
 
