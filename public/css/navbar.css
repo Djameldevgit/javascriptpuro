@@ -1,0 +1,75 @@
+.navbar  {
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+
+}
+
+.navbar .logo {
+  display: flex;
+  margin-left: 50px;
+  background: none;
+  margin-right: 5px;
+  margin-top: auto;
+
+  align-items: center;
+  margin-bottom: 5px;
+
+}
+.navbar .logo h5 {
+  margin-right: 5px;
+
+
+  font-weight: bold;
+  text-shadow: 2px 2px chartreuse;
+}
+
+.navbar .logo img {
+  width: 50px;
+  height: auto;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid cornflowerblue;
+
+}
+
+
+
+
+.navbar .list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  margin-right: 20px;
+}
+
+.navbar .list div {
+
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.navbar .list div:hover {
+  background-color: rgb(59, 161, 245);
+  padding: 10px 10px;
+  border: 1px solid coral;
+  border-radius: 4px;
+}
+
+.navbar .list div .dropdown {
+  background-color: rgb(59, 161, 245);
+  padding: 10px 10px;
+  border: 1px solid coral;
+  border-radius: 4px;
+}
+
+.navbar .list .dropdown div {
+  display: none;
+}
+
+.navbar .list .dropdown div :hover {
+  display: block;
+}

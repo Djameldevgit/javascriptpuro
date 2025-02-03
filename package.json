@@ -1,0 +1,23 @@
+{
+  "name": "0000javascriptpuro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "routes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Djameldevgit/javascriptpuro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Djameldevgit/javascriptpuro/issues"
+  },
+  "homepage": "https://github.com/Djameldevgit/javascriptpuro#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
