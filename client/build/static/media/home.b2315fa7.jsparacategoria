@@ -1,0 +1,91 @@
+import React, { useState, useEffect } from 'react'
+ 
+import Posts from '../components/home/Posts'
+import axios from 'axios'  // Importamos Axios
+import LoadIcon from '../images/loading.gif'
+
+let scroll = 0;
+
+const Home = () => {
+    const [category, setCategory] = useState('')  // Estado para la categoría
+    const [posts, setPosts] = useState([])  // Estado para las publicaciones
+    const [loading, setLoading] = useState(false)  // Estado de carga
+    const [search, setSearch] = useState('')  // Estado para la búsqueda (si la implementas)
+
+    // Guardar el desplazamiento actual
+    window.addEventListener('scroll', () => {
+        if(window.location.pathname === '/'){
+            scroll = window.pageYOffset
+            return scroll;
+        }
+    })
+
+    useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo({top: scroll, behavior: 'smooth'})
+        }, 100)
+    },[])
+
+    // Función para manejar el cambio de categoría
+    const handleCategoryChange = (e) => {
+        setCategory(e.target.value)  // Cambiar la categoría seleccionada
+    }
+
+    // Función para obtener publicaciones
+    const fetchPosts = async () => {
+        setLoading(true)  // Iniciar carga
+
+        try {
+            // Realizar la solicitud a la API usando Axios
+            const res = await axios.get(`http://tudominio.com/api/posts?category=${category}&search=${search}`)
+            
+            setPosts(res.data.posts)  // Actualizar el estado de las publicaciones
+        } catch (err) {
+            console.error("Error al obtener publicaciones: ", err)
+        }
+
+        setLoading(false)  // Terminar carga
+    }
+
+    // Ejecutar la búsqueda cada vez que cambie la categoría o el texto de búsqueda
+    useEffect(() => {
+        fetchPosts()  // Llamar a la función para obtener publicaciones
+    }, [category, search])  // Se ejecuta cada vez que cambia category o search
+
+    return (
+        <div className="home row mx-0">
+            
+
+                {/* Filtro de categoría */}
+                <select onChange={handleCategoryChange} value={category}>
+                    <option value="">All Categories</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                    <option value="Sports">Sports</option>
+                    {/* Agrega más categorías según sea necesario */}
+                </select>
+
+                {/* Campo de búsqueda (opcional) */}
+                <input 
+                    type="text" 
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)} 
+                    placeholder="Search posts..." 
+                />
+
+                {/* Mostrar las publicaciones o carga */}
+                {loading ? (
+                    <img src={LoadIcon} alt="loading" className="d-block mx-auto" />
+                ) : (
+                    posts.length === 0 ? (
+                        <h2 className="text-center">No Posts Available</h2>
+                    ) : (
+                        <Posts posts={posts} />
+                    )
+                )}
+            </div>
+        
+    )
+}
+
+export default Home
