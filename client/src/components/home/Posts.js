@@ -27,7 +27,7 @@ const Posts = () => {
     }
 
     return (
-        <div className="posts">
+        <div className="post_thumb">
             {
                 homePosts.posts.map(post => (
                     <PostCard key={post._id} post={post} theme={theme} />

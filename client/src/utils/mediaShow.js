@@ -1,7 +1,10 @@
-export const imageShow = (src, theme) => {
+import { useDispatch } from "react-redux"
+import { GLOBALTYPES } from "../redux/actions/globalTypes"
+const dispatch = useDispatch
+export const imageShow = (src ) => {
     return(
         <img src={src} alt="images" className="img-thumbnail"
-        style={{filter: theme ? 'invert(1)' : 'invert(0)'}} />
+        />
     )
 }
 
@@ -11,3 +14,5 @@ export const videoShow = (src, theme) => {
         style={{filter: theme ? 'invert(1)' : 'invert(0)'}} />
     )
 }
+
+ 

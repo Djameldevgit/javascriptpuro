@@ -22,7 +22,9 @@ io.on('connection', socket => {
     SocketServer(socket)
 })
 
+// Create peer server
  
+
 
 // Routes
 app.use('/api', require('./routes/authRouter'))
@@ -44,18 +46,15 @@ mongoose.connect(URI, {
     console.log('Connected to mongodb')
 })
 
- 
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'))
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+    })
+}
 
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Ruta para el archivo principal
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// En producción, usamos el puerto que nos da el entorno, o un puerto local por defecto
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+const port = process.env.PORT || 5000
+http.listen(port, () => {
+    console.log('Server is running on port', port)
+})
